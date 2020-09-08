@@ -1,0 +1,41 @@
+
+html,body,div{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased; /*chrome、safari*/
+    -moz-osx-font-smoothing: grayscale;/*firefox*/
+}
+th,h2,h3,h4,h5,label,button.ant-btn,li{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+th,h2,h3,h4,h5,button.ant-btn,li{
+    font-weight: 300;
+}
+th,h2,h3,h4,h5,label,button.ant-btn,.side-menu span,th,th div{
+    text-transform: capitalize;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.ant-checkbox-checked .ant-checkbox-inner{
+    background-color: rgba(0,0,0,0.5) !important;
+}
+.ant-form label{
+    font-size: 12px !important;
+}
+
+@font-face
+{
+    font-family:HelveticaNeueMed;
+    src:url('./font/HelveticaNeueMed.ttf?wqeadsasq32#') format('truetype')
+}
+
+
+@font-face
+{
+    font-family:Avenir;
+    src:url('./font/Avenir Light.ttf?wqeqqq32#') format('truetype')
+}
+@font-face
+{
+    font-family:LucidaGrande;
+    src:url('./font/Lucida Grande.ttf?asdq32#') format('truetype')
+}

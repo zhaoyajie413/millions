@@ -1,0 +1,85 @@
+@import "color";
+@import "variable";
+@import "mixin";
+html body{
+  background-color: $background;
+  /*font-family: Helvetica !important;*/
+}
+#app{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: $background;
+}
+/*css clearfix*/
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix:after{clear:both;}
+.clearfix{
+    *zoom:1;/*IE/7/6*/
+}
+
+.pull-left{
+	float: left;
+}
+
+.pull-right{
+	float: right;
+}
+.text-primary{
+  color: $primary !important;
+}
+.text-link{
+  color: $primary;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.text-link:hover{
+  filter: brightness(0.7);
+  /*text-decoration:underline*/
+}
+.gutter-left{
+  margin-left: 8px;
+}
+.gutter-top{
+  margin-top: 8px;
+}
+.ant-form-item{
+  margin-bottom: 12px !important;
+}
+.ant-tree-node-content-wrapper.ant-tree-node-selected{
+  background-color: $primary !important;
+}
+a:hover{
+  text-decoration: underline;
+}
+.ant-table-thead > tr > th{
+  background-color: white;
+}
+.ant-btn{
+  height: 30px;
+  font-size: 14px;
+  line-height:28px;
+}
+.page-header{
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 20px;
+}
+.bread-header-nav{
+  padding:6px 32px;
+  background-color: rgba(0,0,0,0.02);
+}
+.bread-header-nav i.icon-backLast{
+  transform: scaleX(-1);
+}
+.ant-table-small{
+  border:none !important;
+}

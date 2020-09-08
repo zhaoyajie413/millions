@@ -1,0 +1,25 @@
+@mixin  card-shadow {
+	box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+@mixin  card-radius {
+	border-radius:6px;
+}
+@mixin local-center{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+@mixin clearfix{
+	content: "";
+	display: block;
+	clear: both;
+}
+@mixin text-overflow{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	cursor: pointer;
+	word-break:normal;
+}

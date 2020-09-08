@@ -1,0 +1,34 @@
+/*
+Main color:
+IView uses the safer blue as the main color,
+Light primary
+Commonly used in hover and dark primary in active.
+ */
+$primary:#7265e6;
+$lightPrimary:#5cadff;
+$darkPrimary:#2b85e4;
+
+/*
+Auxiliary color:
+Auxiliary color is a representative color,
+Often used for informational cues, such as success, warning, and failure.
+*/
+$info:#2db7f5;
+$danger:#ed4014;
+$warning:#ff9900;
+$success:#19be6b;
+
+/*
+ Neutral color
+Neutral colors are often used for text, background, border, shadow, etc,
+Can reflect the hierarchy of the page.
+ */
+$title:rgba(0,0,0,0.85);
+$content:#515a6e;
+$icon:#808695;
+$desabled:#c5c8ce;
+$border:#dcdee2;
+$divider:#e8eaec;
+$background:#f0f2f5;
+$deepBackground:lighten(#0c142d,5);
+

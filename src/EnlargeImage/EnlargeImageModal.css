@@ -1,0 +1,32 @@
+.enlarge-image{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 9999;
+}
+.enlarge-image img{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.enlarge-image-close {
+  position: absolute;
+  right: -100%;
+  top:-100%;
+  width: 26px;
+  height: 26px;
+  color: white;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.1);
+  text-align: center;
+  line-height: 22px;
+  border: 2px solid #f5f5f5;
+  box-sizing: border-box;
+  z-index: 100;
+  cursor: pointer;
+}
