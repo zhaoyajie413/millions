@@ -20,9 +20,7 @@ let getAnInstance = (el,option) => {
   return new Vue({
     el:el,
     data(){
-      return{
-        ...option
-      }
+      return option
     },
     methods:{
       handleLoad(event){

@@ -10,6 +10,12 @@
   "author": "zhaoyajie",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/helper-module-imports": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-stage-2": "^7.8.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
     "compression-webpack-plugin": "^5.0.2",
     "css-loader": "^3.6.0",
     "html-webpack-plugin": "^3.2.0",
@@ -25,30 +31,42 @@
     "vue": "^2.6.12",
     "vue-loader": "^15.7.1",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-parallel-uglify-plugin": "^1.1.2"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
+    "@vue/babel-preset-jsx": "^1.1.2",
     "ant-design-vue": "^1.6.5",
     "autoprefixer": "^9.8.6",
     "axios": "^0.20.0",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "dedent": "^0.7.0",
     "js-cookie": "^2.2.1",
     "less": "^2.5.1",
+    "mini-css-extract-plugin": "^0.11.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "regenerator-runtime": "^0.13.7",
+    "terser-webpack-plugin": "^4.1.0",
     "tween": "^0.9.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-codemirror": "^3.1.8",
     "vue-draggable-resizable": "^1.7.5",
     "vue-router": "^3.4.3",
     "vue-template-compiler": "^2.6.12",
     "vuex": "^3.5.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "not ie <= 11",
+    "Android >= 4.0",
+    "iOS >= 8"
+  ]
 }

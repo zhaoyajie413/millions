@@ -8,7 +8,7 @@ import store from './store/'
 import Antd from 'ant-design-vue'
 import './plugins/axios'
 import millions from '../src/index'
-import 'ant-design-vue/dist/antd.less'
+import 'ant-design-vue/dist/antd.css';
 
 Vue.use(millions);
 Vue.use(Antd);
