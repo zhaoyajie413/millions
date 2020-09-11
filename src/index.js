@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueDraggableResizable from 'vue-draggable-resizable';
 // 可选择导入默认样式
-import ToolMinx from "./mixins/ToolMinx";
+import ToolMinx from "./Mixins/ToolMinx";
 
 Vue.mixin(ToolMinx)
 

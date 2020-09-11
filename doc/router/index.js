@@ -4,23 +4,23 @@ import Router from 'vue-router'
 export const constantRouterMap = [
     {
         path:"/",
-        component:()=>import("@pages/main.vue")
+        component:()=>import("@pages/Main.vue")
     },
   {
      path:"/TabsCard",
      component:()=>import("@pages/TabsCardPage.vue")
   },
     {
-        path:"/multipleText",
+        path:"/MultipleText",
         component:()=>import("@pages/MultipleTextPage.vue")
     },
     {
         path:"/enlargeImagePage",
-        component:()=>import("@pages/enlargeImagePage.vue")
+        component:()=>import("@pages/EnlargeImagePage.vue")
     },
     {
         path:"/uploadImagePage",
-        component:()=>import("@pages/uploadImagePage.vue")
+        component:()=>import("@pages/UploadImagePage.vue")
     },
     {
         path:"/iconSelectPage",

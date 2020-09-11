@@ -1,6 +1,6 @@
 <template>
     <div style="position: relative;">
-        <pre v-html="jsonFormat">
+        <pre v-html="JsonFormat">
         </pre>
         <a @click="copyText" class="json-formmat-btn">copy</a>
     </div>
