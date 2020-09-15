@@ -5,17 +5,18 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const webpack = require("webpack");
 const path = require('path');
 
 const config = {
-    mode: 'production',
+    mode: 'development',
     devtool: 'source-map',
     output: {
         filename: "[name].bundle.js",
         // 将输出的文件都放在dist目录下
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        chunkFilename:'static/js/[name].chunk.js'
+        chunkFilename:'static/js/[name].chunk.js',
     },
     entry: './doc/index.js',
     module: {
@@ -80,7 +81,7 @@ const config = {
             name: entrypoint => `runtime-${entrypoint.name}`,
         },
         minimizer: [
-            new TerserPlugin({
+           new TerserPlugin({
                 cache: true,
                 parallel: true,
                 sourceMap: true, // Must be set to true if using source-maps in production
@@ -146,6 +147,7 @@ const config = {
         alias: {
             // 别名
             vue$: "vue/dist/vue.esm.js", //加上这一句
+            "@":path.resolve(__dirname, "doc/"),
             "@pages":path.resolve(__dirname, "doc/pages")
         }
     },

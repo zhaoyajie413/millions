@@ -1,11 +1,6 @@
-import Vue from 'vue'
 import VueDraggableResizable from 'vue-draggable-resizable';
 // 可选择导入默认样式
 import ToolMinx from "./Mixins/ToolMinx";
-
-Vue.mixin(ToolMinx)
-
-Vue.component('vue-draggable-resizable', VueDraggableResizable);
 
 const api = Object.create(null)
 
@@ -22,15 +17,20 @@ components.keys().forEach(fileName => {
     api[componentConfig.name]=componentConfig;
   })
 
-const install = () => {
-   components.keys().forEach(fileName => {
-       // 获取组件配置
-       const componentModule = components(fileName);
-
-       const Config = componentModule.default || componentModule
-		 // 全局注册组件
+const install = (Vue) => {
+try{
+    Vue.mixin(ToolMinx)
+    Vue.component('vue-draggable-resizable', VueDraggableResizable);
+    components.keys().forEach(fileName => {
+        // 获取组件配置
+        const componentModule = components(fileName);
+        const Config = componentModule.default || componentModule;
+        console.log(Vue)
         Vue.component(Config.name, Config);
     });
+}catch (e) {
+    throw e;
+}
 };
 
 export {api}
