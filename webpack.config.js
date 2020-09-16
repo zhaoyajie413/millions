@@ -1,10 +1,19 @@
+//html模板
 var htmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+//压缩js
 const TerserPlugin = require('terser-webpack-plugin');
+//gzip
 const CompressionPlugin = require("compression-webpack-plugin");
+//css-loader 提取css
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+//压缩css
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require("webpack");
 const path = require('path');
 
@@ -59,21 +68,36 @@ const config = {
             chunks: 'all',
             name: false,
             cacheGroups: {
+                anted: {
+                    test: /ant-design-vue/,
+                    name: 'anted',
+                    minChunks: 1,
+                    priority: 4
+                },
+                vue: {
+                    test: /vue/,
+                    name: 'vue',
+                    minChunks: 1,
+                    priority: 4
+                },
+                codemirror: {
+                    test: /codemirror/,
+                    name: 'codemirror',
+                    minChunks: 1,
+                    priority: 4
+                },
                 vendors: {
                     test: /node_modules/,
                     name: 'vendors',
-                    minSize: 0,
+                   // maxSize:1.5*1024*1024,
                     minChunks: 1,
-                    chunks: 'initial',
-                    priority: 2 // 该配置项是设置处理的优先级，数值越大越优先处理
+                    priority: 2
                 },
-                commons: {
-                    name: "comomns",
-                    test: path.resolve(__dirname,"doc"), // 可自定义拓展规则
-                    minChunks: 2, // 最小共用次数
-                    minSize: 0,   //代码最小多大，进行抽离
-                    priority: 1, //该配置项是设置处理的优先级，数值越大越优先处理
-                }
+                common:{
+                    name:'testCommon', // 打包后的文件名
+                    minSize: 0,
+                    minChunks: 2 // 重复2次才能打包到此模块
+                },
             }
         },
         // Keep the runtime chunk separated to enable long term caching
@@ -115,6 +139,7 @@ const config = {
         ]
     },
         plugins: [
+            new CleanWebpackPlugin(),
         new htmlWebpackPlugin({
             inject: true,
             template: './doc/index.html' ,
@@ -142,6 +167,7 @@ const config = {
             threshold: 10240,//只处理比这个值大的资源。按字节计算
             minRatio: 0.8//只有压缩率比这个值小的资源才会被处理
         }),
+         //new BundleAnalyzerPlugin()
     ],
     resolve: {
         alias: {

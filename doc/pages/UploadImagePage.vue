@@ -15,8 +15,12 @@
 </template>
 
 <script>
+    import CodeView from "@/components/CodeView/CodeView.vue";
     export default {
         name: "uploadImagePage",
+        components:{
+            CodeView
+        },
         data(){
             return {
                 fileList:[]

@@ -18,8 +18,12 @@
 </template>
 
 <script>
+    import CodeView from "@/components/CodeView/CodeView.vue";
     export default {
         name: "EnlargeImagePage",
+        components:{
+            CodeView
+        },
         data(){
             return {
                 code_01:`<enlarge-image>

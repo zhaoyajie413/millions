@@ -13,7 +13,6 @@
         </div>
 
        <div class="page-content">
-           <h2>傻逼</h2>
            <router-view></router-view>
        </div>
     </div>
@@ -30,9 +29,6 @@
             }
         },
         mounted() {
-          console.log("mayuyu")
-            alert("mayuyu")
-            document.write("mayuyu")
         },
         methods:{
         }

@@ -46,8 +46,12 @@
 </template>
 
 <script>
+    import CodeView from "@/components/CodeView/CodeView.vue";
     export default {
         name: "TabsCardPage",
+        components:{
+            CodeView
+        },
         data(){
             return {
                 code_01:`<tabs-card title="足球风云">

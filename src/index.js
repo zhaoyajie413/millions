@@ -25,7 +25,6 @@ try{
         // 获取组件配置
         const componentModule = components(fileName);
         const Config = componentModule.default || componentModule;
-        console.log(Vue)
         Vue.component(Config.name, Config);
     });
 }catch (e) {

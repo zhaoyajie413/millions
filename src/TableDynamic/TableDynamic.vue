@@ -3,13 +3,24 @@
     <div class="table-dynamic-filter-btn" @click="visible = true">
       <a-icon style="transform: rotate(90deg)" type="ellipsis" />
     </div>
-    <a-table ref="table"
+<!--    <a-table ref="table"
              v-bind="{...$props}"
              v-on="$listeners"
              :columns="dynamicColumns"
              :components="customHeader"
              size="small">
+      <slot></slot>
+    </a-table>-->
+    <a-table ref="table"
+             v-bind="{...$props}"
+             v-on="$listeners"
+             :components="customHeader"
+             size="small">
+      <div>
+
+      </div>
     </a-table>
+
     <a-modal
             title="自定义筛选表头"
             :visible="visible"
@@ -36,7 +47,8 @@
   import { Table } from 'ant-design-vue';
 
   export default {
-    name: 'tableDynamic',
+    name: 'TableDynamic',
+    componentName:'TableDynamic',
     props:{
       ...Table.props,
       'name':{
@@ -95,10 +107,10 @@
         let _this = this;
         let thDom = null;
         const { key, ...restProps } = props;
-        const col = this.columns.find(col => {
+        const col = this.columns?this.columns.find(col => {
           const k = col.dataIndex || col.key;
           return k === key;
-        });
+        }):[];
         if (col==null || !col.width) {
           return <th {...restProps}>{children}</th>;
         }
@@ -140,13 +152,19 @@
       this.setDragState(this.dynamicColumns);
     },*/
     created() {
-      var storageList =  localStorage.getItem(this.storageName);
+      console.log("miosdasd")
+  /*    var storageList =  localStorage.getItem(this.storageName);
       if(storageList){
         let dataIndexList = JSON.parse(storageList).map(it=>it.dataIndex);
         this.dynamicColumns = this.columns.filter(it=>dataIndexList.includes(it.dataIndex));
       }else{
         this.dynamicColumns = this.columns.filter(it=>it.visible);
-      }
+      }*/
+      this.$off();
+      this.$on('table.dynamic.addItem',function (item) {
+        console.log("mayuyu");
+        console.log(item)
+      })
       this.setDragState(this.dynamicColumns);
     }
   };

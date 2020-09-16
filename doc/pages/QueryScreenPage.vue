@@ -133,6 +133,7 @@
 </template>
 
 <script>
+    import CodeView from "@/components/CodeView/CodeView.vue";
     const code_01 = `<query-screen>
             <query-screen-select-mixin
                     @change="getData"
@@ -262,6 +263,9 @@
 
     export default {
         name: "QueryScreenPage",
+        components:{
+            CodeView
+        },
         data(){
           return {
               search:{},
