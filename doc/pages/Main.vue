@@ -5,7 +5,6 @@
         <code-view v-model="code_01"></code-view>
         <h3>使用</h3>
         <code-view v-model="code_02"></code-view>
-        <!--<a-button @click="handelClick">点击</a-button>-->
     </div>
 </template>
 
@@ -18,6 +17,7 @@
         },
         data(){
           return {
+              search:{},
               code_01:"npm i --s-d millions-pc",
               code_02:"import millions from \"millions-pc\";\n" +
                   "import \"millions-pc/build/css/main.css\"\n" +
@@ -27,6 +27,9 @@
         methods:{
             handelClick(){
                 window.open("/dropInputPage", "", "width=800,height="+window.innerHeight)
+            },
+            getData(){
+                this.$message.success("没有后台")
             }
         },
         mounted() {

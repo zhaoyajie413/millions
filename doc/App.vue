@@ -2,6 +2,7 @@
     <div class="page-wrapper">
         <div class="side-menu">
             <p><router-link to="/">简介</router-link></p>
+            <p><router-link to="/exampleListPage">完整示例</router-link></p>
             <p><router-link to="/TabsCard">卡片内容(布局)</router-link></p>
             <p><router-link to="/multipleText">多行省略</router-link></p>
             <p><router-link to="/enlargeImagePage">图片预览</router-link></p>
@@ -45,8 +46,11 @@
         min-height: 100vh;
         box-sizing: border-box;
         padding: 10px 12px;
-        background-color: #e5e5e5;
+        background-color: #000000;
         color: #333;
+        a{
+            color: #cccccc;
+        }
     }
     .page-content{
         width: calc(100vw - 220px);

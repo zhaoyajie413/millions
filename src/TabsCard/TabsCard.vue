@@ -51,7 +51,6 @@
     },
     created() {
       this.currentIndex = this.current;
-      this.$off();
       this.$on("tabs.card.addItem",function(item){
           this.options.push({
               label:item.label,

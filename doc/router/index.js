@@ -42,6 +42,10 @@ export const constantRouterMap = [
         path:"/tableDynamicPage",
         component:()=>import("@pages/TableDynamicPage.vue")
     },
+    {
+        path:"/exampleListPage",
+        component:()=>import("@pages/exampleListPage.vue")
+    },
 
 ]
 

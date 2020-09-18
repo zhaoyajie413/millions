@@ -23,7 +23,7 @@ export const generateColumns =(h)=>{
       width:60,
       customRender: (text, row, index,) => {
         return (<multiple-text line="3">
-            今年7月份，东京奥组委首席执行官武藤敏郎表示，2021年的奥运会很有可能限制观众人数，但将尽量避免无观众模式。此外，奥运会将精简开闭幕式，并削减各国代表和工作人员的数量。原本有超过1.1万运动员计划参加东京奥运会，但由于日本目前仍对大多数国家关闭国境，具体有多少运动员能最终成行尚未可知。武藤还补充道，“如果有足够的疫苗当然很好，但我们没有说过没有疫苗就不会办奥运会，这不是一个先决条件”。
+            Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.
             </multiple-text>);
       }
     },

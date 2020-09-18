@@ -3,24 +3,14 @@
     <div class="table-dynamic-filter-btn" @click="visible = true">
       <a-icon style="transform: rotate(90deg)" type="ellipsis" />
     </div>
-<!--    <a-table ref="table"
-             v-bind="{...$props}"
-             v-on="$listeners"
-             :columns="dynamicColumns"
-             :components="customHeader"
-             size="small">
-      <slot></slot>
-    </a-table>-->
-    <a-table ref="table"
-             v-bind="{...$props}"
-             v-on="$listeners"
-             :components="customHeader"
-             size="small">
-      <div>
-
-      </div>
-    </a-table>
-
+     <a-table ref="table"
+                 v-bind="{...$props}"
+                 v-on="$listeners"
+                 :columns="dynamicColumns"
+                 :components="customHeader"
+                 size="small">
+          <slot></slot>
+        </a-table>
     <a-modal
             title="自定义筛选表头"
             :visible="visible"
@@ -45,7 +35,7 @@
 
 <script>
   import { Table } from 'ant-design-vue';
-
+  const TablesList = []
   export default {
     name: 'TableDynamic',
     componentName:'TableDynamic',
@@ -142,7 +132,7 @@
       );
       },
     },
-    /*updated() {
+/*    updated() {
       var storageList =  localStorage.getItem(this.storageName);
       if(storageList){
         this.dynamicColumns = JSON.parse(storageList)
@@ -152,20 +142,27 @@
       this.setDragState(this.dynamicColumns);
     },*/
     created() {
-      console.log("miosdasd")
-  /*    var storageList =  localStorage.getItem(this.storageName);
+      var storageList =  localStorage.getItem(this.storageName);
       if(storageList){
         let dataIndexList = JSON.parse(storageList).map(it=>it.dataIndex);
         this.dynamicColumns = this.columns.filter(it=>dataIndexList.includes(it.dataIndex));
       }else{
         this.dynamicColumns = this.columns.filter(it=>it.visible);
-      }*/
-      this.$off();
-      this.$on('table.dynamic.addItem',function (item) {
-        console.log("mayuyu");
-        console.log(item)
-      })
+      }
       this.setDragState(this.dynamicColumns);
+    },
+    mounted() {
+      if(TablesList.indexOf(this.$route.path)!=-1){
+        throw "一个页面只能有一个动态表头组件"
+      }else{
+        TablesList.push(this.$route.path)
+      }
+    },
+    destroyed() {
+      var index = TablesList.indexOf(this.$route.path);
+     if(index != -1){
+       TablesList.splice(index,1);
+     }
     }
   };
 

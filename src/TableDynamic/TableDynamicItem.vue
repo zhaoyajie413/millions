@@ -10,6 +10,9 @@
 
     export default {
         name: "TableDynamicItem",
+        data(){
+            return {}
+        },
         props:{
             ...Table.Column.props
         },

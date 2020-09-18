@@ -24,7 +24,6 @@
       }
     },
     created() {
-      this.$off();
       this.$on('drop.input.addItem',function (item) {
         this.labels.push({
           label:item.label,
@@ -34,6 +33,7 @@
     },
     methods:{
       handelClick(){
+        console.log("mayuyu")
         this.$emit('click')
       }
     }
