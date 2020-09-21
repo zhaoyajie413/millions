@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading" class="uploaded-images" :style="{width:width+'px',height:height+'px'}">
+  <div  class="uploaded-images" :style="{width:width+'px',height:height+'px'}">
     <img
       ref="img"
       @loadstart="handleLoadStart"
@@ -7,6 +7,7 @@
       @error="handleError"
       class="upload-preview"
       :src="src"/>
+    <slot></slot>
     <div v-if="close" class="upload-close">
       <i style="color: dodgerblue" @click.stop="handleRemove" class="icon-close" ></i>
     </div>

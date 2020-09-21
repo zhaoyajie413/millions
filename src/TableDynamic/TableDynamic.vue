@@ -66,7 +66,8 @@
         },
         visible:false,
         confirmLoading:false,
-        dynamicColumns:[]
+        dynamicColumns:[],
+        routePath:""
       }
     },
     methods:{
@@ -152,14 +153,15 @@
       this.setDragState(this.dynamicColumns);
     },
     mounted() {
-      if(TablesList.indexOf(this.$route.path)!=-1){
+      this.routePath = this.$route.path;
+      if(TablesList.indexOf(this.routePath)!=-1){
         throw "一个页面只能有一个动态表头组件"
       }else{
-        TablesList.push(this.$route.path)
+        TablesList.push(this.routePath);
       }
     },
     destroyed() {
-      var index = TablesList.indexOf(this.$route.path);
+      var index = TablesList.indexOf(this.routePath);
      if(index != -1){
        TablesList.splice(index,1);
      }

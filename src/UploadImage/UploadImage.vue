@@ -1,6 +1,18 @@
 <template>
   <div class="upload-image-container">
-    <slot></slot>
+    <EnlargeImage
+            style="display: inline-block;margin-right: 4px;"
+            v-for="(item,i) in fileList"
+            :key="item+i">
+      <preview-image
+              style="margin-right: 8px"
+              @remove="handleRemove"
+              :src="item" :index="i">
+        <a-progress class="upload-image-process" v-if="i==fileList.length-1 && loading"
+                    :status="status"
+                    type="circle" :width="60" :percent="percent" />
+      </preview-image>
+    </EnlargeImage>
     <div v-if="fileList.length<maxLength" class="uploader-container" @click="pickImage">
       <input @change="handleInput" style="display: none" ref="imageInput" type="file" />
       <div class="upload-button">
@@ -10,6 +22,8 @@
   </div>
 </template>
 <script>
+  import upload from "../Utils/upload";
+
   function getBase64(img, callback) {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
@@ -24,6 +38,8 @@
         imageUrl: '',
         source:'',
         iconType:'',
+        percent:0,
+        status:'active'
       };
     },
     props:{
@@ -45,7 +61,23 @@
       'maxLength':{
         type:[Number,String],
         default(){
-          return 6;
+          return 999;
+        }
+      },
+      'url':{
+        type:String,
+        required:true
+      },
+      'data':{
+        type:Object,
+        default(){
+          return {};
+        },
+      },
+      'filename':{
+        type:String,
+        default(){
+          return "file"
         }
       }
     },
@@ -63,15 +95,13 @@
       }
     },
     methods: {
-      handleRemove(){
-        this.$refs.imageInput.value = null;
-        this.source = null;
-        this.$emit('input',{
-          file:null,
-          iconType:''
-        });
+      handleRemove(imgUrl,index){
+        if(index==this.fileList.length-1)this.loading = false;
+        this.fileList.splice(index,1);
+        this.$emit('remove',index)
       },
       pickImage(){
+        if(this.loading)return;
         this.$refs.imageInput.value = null;
         this.$refs.imageInput.click();
       },
@@ -84,7 +114,28 @@
       },
       /*上传文件及回调*/
       localData(file){
-       this.$emit('upload',file);
+        var _this =this;
+       this.$emit('begin',file);
+        this.status = 'active'
+       this.percent = 0;
+       this.loading = true;
+            upload({
+                    onProgress: (event)=>{
+                      this.percent = Math.round(event.percent)
+                    },
+                    onError: (event, body)=>{
+                      this.$emit('error',event,body);
+                      this.status = 'exception'
+                    },
+                    onSuccess: (body)=>{
+                      this.$emit('success',file);
+                      this.loading = false;
+                    },
+                    data: this.data,
+                     filename:this.filename,
+                    file: file,
+                    action: this.url,
+                   })
       },
     dataURLtoBlob(dataurl) {
     var arr = dataurl.split(','),
@@ -97,19 +148,6 @@
     }
     return new Blob([u8arr], { type: mime });
   },
-      handleChange(info) {
-        if (info.file.status === 'uploading') {
-          this.loading = true;
-          return;
-        }
-        if (info.file.status === 'done') {
-          // Get this url from response in real world.
-          getBase64(info.file.originFileObj, imageUrl => {
-            this.imageUrl = imageUrl;
-            this.loading = false;
-          });
-        }
-      },
       beforeUpload(file) {
         const isJPG = (file.type == 'image/jpeg' || file.type == 'image/png')
         if (!isJPG) {
@@ -148,5 +186,14 @@
         z-index: 100;
         color: silver;
     }
+.upload-image-process{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 
+}
+ .upload-image-process.ant-progress-circle .ant-progress-text{
+  color: dodgerblue;
+}
 </style>
